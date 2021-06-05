@@ -1,6 +1,4 @@
 import React from 'react';
-import "../styles/bootstrap.min.css";
-import "../styles/common.css";
 import axios from "axios";
 import makeToast from "../Toaster/toaster";
 
@@ -31,7 +29,6 @@ const Register = (props) => {
 		});
 	};
 	return (
-		<div className="App">
 		  <div className="login-form">
 			<div className="card-form">
 				<h2 className="text-center ">Enregistrement</h2>
@@ -50,7 +47,6 @@ const Register = (props) => {
 				<button onClick={registerUser} className="btn btn-primary btn-block">S'enregistrer</button>
 			</div>
 		  </div>
-		</div>
 		);
 }
 

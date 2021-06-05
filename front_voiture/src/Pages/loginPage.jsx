@@ -1,6 +1,4 @@
 import React from 'react';
-import "../styles/bootstrap.min.css";
-import "../styles/common.css";
 import axios from "axios";
 import makeToast from "../Toaster/toaster";
 
@@ -29,7 +27,6 @@ const Login = (props) => {
 		});
 	};
 	return (
-		<div className="App">
 		  <div className="login-form">
 			<div className="card-form">
 				<h2 className="text-center ">Connéxion</h2>
@@ -44,7 +41,6 @@ const Login = (props) => {
 				<button onClick={loginUser} className="btn btn-primary btn-block">Se connecter</button>
 			</div>
 		  </div>
-		</div>
 		);
 }
 

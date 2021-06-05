@@ -1,6 +1,4 @@
 import React from 'react';
-import "../styles/bootstrap.min.css";
-import "../styles/common.css";
 import axios from "axios";
 import { Link, RouteComponentProps } from 'react-router-dom';
 
@@ -18,7 +16,7 @@ class Home extends React.Component {
     render () {
     	const cars = this.state.cars;
     	return (
-			<div className="App">
+			<div>
 		        {cars.length === 0 && (
 		            <div className="text-center">
 		                <h2>Pas de voiture enregistrée !</h2>

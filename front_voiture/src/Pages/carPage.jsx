@@ -1,6 +1,4 @@
 import React from 'react';
-import "../styles/bootstrap.min.css";
-import "../styles/common.css";
 import axios from "axios";
 import Comment from "./Components/commentComponent"
 import { RouteComponentProps } from 'react-router-dom';
@@ -22,11 +20,10 @@ class Car extends React.Component {
     render () {
     	const car = this.state.car;
     	return (
-    		<div className="App">
 	    		<div className="container">
 	    			<div className="row">
-	    				<div className="col-md-3">
-                            <img src={'/images/'+car.file}/>
+	    				<div className="col-md-12">
+                            <img src={'/images/'+car.file} alt="photo de la voiture"/>
 			    			<h3>{car.mark}</h3>
 			    			<p>{car.type}</p>
 			    			<h4>{car.model}</h4>
@@ -37,7 +34,6 @@ class Car extends React.Component {
 			    			<Comment car_id={this.state.id}></Comment>
 	    			</div>
 	    		</div>
-    		</div>
     		)
     }
  }

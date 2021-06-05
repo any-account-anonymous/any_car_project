@@ -1,6 +1,4 @@
 import React from 'react';
-import "../../styles/bootstrap.min.css";
-import "../../styles/common.css";
 import axios from "axios";
 import makeToast from "../../Toaster/toaster";
 
@@ -14,7 +12,7 @@ class Comment extends React.Component {
         }
     }
     componentDidMount() {
-        const token = localStorage.getItem('Car_Token');
+        let token = localStorage.getItem('Car_Token');
         if (token == null) {
             makeToast("error", "Vous n'êtes pas connecté !");
             axios.get(`http://localhost:8000/car/${this.state.id}/comment`)
@@ -42,7 +40,7 @@ class Comment extends React.Component {
 
     processFormSubmission(e) {
         e.preventDefault();
-        const token = localStorage.getItem('Car_Token');
+        let token = localStorage.getItem('Car_Token');
         const commentdata = {
         	message: this.state.currentMessage,
         }
@@ -55,9 +53,16 @@ class Comment extends React.Component {
     	let res = axios.post(`http://localhost:8000/car/${this.state.id}/comment`, commentdata, config);
     	res.then((response) => {
     		makeToast("success", response.data.message)
+            this.setState({currentMessage: ""});
     	}).catch((err) => {
 			makeToast("error", err.response.data.message);
 		});
+        axios.get(`http://localhost:8000/car/${this.state.id}/comment`, config)
+        .then((response) => {
+            this.setState({ comments: response.data })
+        }).catch((err) => {
+            makeToast("error", err.response.data.message);
+        });
     }
     render () {
         const comments = this.state.comments;
@@ -70,7 +75,7 @@ class Comment extends React.Component {
 					</form>
 					<ul>
 						{comments && comments.map(comment =>
-							<li key={comments._id}>
+							<li key={comment._id}>
 								<span>{comment.createdAt.toLocaleString()}</span>
 								<strong>{comment.username}</strong>
 								<p>{comment.message}</p>

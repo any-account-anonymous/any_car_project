@@ -1,6 +1,4 @@
 import React from 'react';
-import "../styles/bootstrap.min.css";
-import "../styles/common.css";
 import axios from "axios";
 import makeToast from "../Toaster/toaster";
 
@@ -23,7 +21,7 @@ const CarEdit = (props) => {
 		cardata.append("description",description);
 		cardata.append("file",file);
 
-		const token = localStorage.getItem('Car_Token');
+		let token = localStorage.getItem('Car_Token');
 		if (token == null) token = 'no_token';
 
 		const config = {
@@ -42,7 +40,6 @@ const CarEdit = (props) => {
 		});
 	};
 	return (
-		<div className="App">
 		  <div className="login-form">
 			<div className="card-form">
 				<h2 className="text-center ">Information sur la voiture</h2>
@@ -73,7 +70,6 @@ const CarEdit = (props) => {
 				<button onClick={registerCar} type="submit" className="btn btn-primary btn-block">Enregistrer</button>
 			</div>
 		  </div>
-		</div>
 		);
 }
 
