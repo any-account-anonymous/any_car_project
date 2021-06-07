@@ -19,6 +19,8 @@ const Login = (props) => {
 			//console.log(response.data)
 			makeToast("success", response.data.message);
 			localStorage.setItem("Car_Token", response.data.token);
+			localStorage.setItem("Car_UserId", response.data.user_id);
+			localStorage.setItem("Car_UserName", response.data.user_name);
 			props.history.push("/");
 		})
 		.catch((err) => {
